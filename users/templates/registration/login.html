@@ -1,0 +1,19 @@
+{% extends 'users/layout.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block body %} 
+<div id="content2">
+<form action="" method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <input type="submit" class="btn" value="Login">
+</form>
+
+<p>Don't have an account? Create one
+    <a href="/register"><span style="color:rgb(117, 82, 173);">here</span></a>
+</p>
+</div>
+
+{% endblock %}

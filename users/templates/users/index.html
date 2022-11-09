@@ -1,0 +1,43 @@
+{% extends 'users/layout.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+
+<div id="nav">
+    <p>Welcome, {{ user }} </p>
+    <p><a href="/logout">Logout</a></p>
+</div>
+<br><br><br>
+<div id="content">
+    <div id="form-content">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Go" id="sub1">
+        </form>
+    </div>
+<br>
+    <div id="todos-content">
+        
+        {% for todo in todos %}
+            <p><span class="clickable">{{ todo.text }} </span>
+                <a style="color:rgb(197, 65, 65); padding-left:10px;" href="{% url 'delete_task' todo.id %}">Delete</a> </p>
+            <hr style=" border: none; height: 1px; background-color: rgb(236, 236, 236);">
+        {% endfor %}
+        
+    </div>
+
+</div>
+
+{% else %}
+<div id="content2">
+    <h2><a href="/login"><span style="color:rgb(134, 175, 175)">Login</span></a> or 
+        <a href="/register"><span style="color:rgb(134, 175, 175)">Register </span></a> 
+    to start</h2>
+</div>
+    
+{% endif %}
+{% endblock %}

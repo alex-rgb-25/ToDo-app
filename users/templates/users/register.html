@@ -1,0 +1,16 @@
+{% extends 'users/layout.html' %}
+{% block  title %} Register {% endblock %}
+
+{% block body %}
+<div id="content2">
+    
+    <h1>Registration</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn" type="submit" value="Register">
+        <a href="/"><span style="color:rgb(117, 82, 173);padding-left:20px">Home</span></a>
+    </form>
+
+</div>
+{% endblock %}
